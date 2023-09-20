@@ -1,0 +1,35 @@
+@import '../../../styles';
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+.sidenav-container {
+  width: 100%;
+  height: 100%;
+}
+
+.sidenav-content {
+  height: 100%;
+}
+
+.sidenav {
+  min-width: 300px;
+  padding: 0px;
+}
+.mat-nav-list {
+  padding-top: 0px;
+}
+.list-item-active {
+  font-weight: bold;
+  color: mat-color($facerecon-frontend-accent, darker) !important;
+}
+.menu-title-center {
+  margin: 0 auto;
+}
+.app-nav-list-icon {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+.bold {
+  font-weight: bold;
+}

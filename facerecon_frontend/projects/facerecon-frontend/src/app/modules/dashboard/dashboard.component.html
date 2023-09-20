@@ -1,0 +1,58 @@
+<mat-drawer-container class="sidenav-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="push">
+    <mat-nav-list role="list">
+      <mat-toolbar color="primary"><span class="menu-title-center">Menu</span></mat-toolbar>
+      <a mat-list-item [routerLink]="['/']" style="height: 0;"></a>
+
+      <a mat-list-item routerLinkActive
+        (click)="drawer.close()"
+        routerLinkActive="list-item-active"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="['/dashboard/home']">
+        <mat-icon matListIcon class="app-nav-list-icon">home</mat-icon>
+        Home</a>
+      <a mat-list-item routerLinkActive
+        (click)="drawer.close()"
+        routerLinkActive="list-item-active"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="['/dashboard/clients']">
+        <mat-icon matListIcon class="app-nav-list-icon">apps</mat-icon>
+        Clients</a>
+      <a mat-list-item routerLinkActive
+        (click)="drawer.close()"
+        routerLinkActive="list-item-active"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="['/dashboard/billing']">
+        <mat-icon matListIcon class="app-nav-list-icon">payments</mat-icon>
+        Billing</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item class="bold"
+        (click)="logout()">
+        <mat-icon matListIcon color="accent" class="app-nav-list-icon">logout</mat-icon>
+        Logout</a>
+    </mat-nav-list>
+    <!-- <ul>
+      <li><a [routerLink]="['clients']">Clients</a></li>
+      <li><a [routerLink]="['billing']">Billing</a></li>
+    </ul> -->
+  </mat-drawer>
+
+  <div class="sidenav-content">
+
+    <mat-toolbar color="primary">
+      <button mat-icon-button aria-label="Menu" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{title}}</span>
+      <span class="toolbar-spacer"></span>
+      <button (click)="accountManagement()" mat-icon-button aria-label="Account">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button (click)="logout()" mat-icon-button color="accent" aria-label="Logout">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

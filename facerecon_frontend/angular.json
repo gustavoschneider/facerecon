@@ -1,0 +1,134 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "facerecon-frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/facerecon-frontend",
+      "sourceRoot": "projects/facerecon-frontend/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/facerecon-frontend",
+            "index": "projects/facerecon-frontend/src/index.html",
+            "main": "projects/facerecon-frontend/src/main.ts",
+            "polyfills": "projects/facerecon-frontend/src/polyfills.ts",
+            "tsConfig": "projects/facerecon-frontend/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/facerecon-frontend/src/favicon.ico",
+              "projects/facerecon-frontend/src/assets"
+            ],
+            "styles": [
+              "projects/facerecon-frontend/src/styles.scss"
+            ],
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "keycloak-js"
+           ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/facerecon-frontend/src/environments/environment.ts",
+                  "with": "projects/facerecon-frontend/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "facerecon-frontend:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "facerecon-frontend:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "facerecon-frontend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/facerecon-frontend/src/test.ts",
+            "polyfills": "projects/facerecon-frontend/src/polyfills.ts",
+            "tsConfig": "projects/facerecon-frontend/tsconfig.spec.json",
+            "karmaConfig": "projects/facerecon-frontend/karma.conf.js",
+            "assets": [
+              "projects/facerecon-frontend/src/favicon.ico",
+              "projects/facerecon-frontend/src/assets"
+            ],
+            "styles": [
+              "projects/facerecon-frontend/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/facerecon-frontend/tsconfig.app.json",
+              "projects/facerecon-frontend/tsconfig.spec.json",
+              "projects/facerecon-frontend/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/facerecon-frontend/e2e/protractor.conf.js",
+            "devServerTarget": "facerecon-frontend:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "facerecon-frontend:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "facerecon-frontend"
+}

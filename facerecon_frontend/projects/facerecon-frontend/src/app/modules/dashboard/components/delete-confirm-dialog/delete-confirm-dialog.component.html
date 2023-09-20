@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+
+<mat-dialog-content fxLayout="column" fxLayoutAlign="space-between center">
+  <div>
+    <p>{{data.message}}</p>
+  </div>
+
+  <div *ngIf="data.showDanger" class="alert alert-danger" fxLayoutAlign="center center">
+    <mat-icon color="accent" class="alert-danger-icon">warning</mat-icon>
+    <span><strong>Procced with caution!</strong> This operation can not be <strong>UNDONE</strong>!</span>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button color="accent" [mat-dialog-close]="true">Delete</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

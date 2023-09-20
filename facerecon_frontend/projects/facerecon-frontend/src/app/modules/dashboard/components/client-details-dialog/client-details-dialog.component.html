@@ -1,0 +1,40 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title>{{action}} Client</h2>
+  <mat-dialog-content>
+
+    <mat-form-field class="full-width">
+      <mat-label>Client Id</mat-label>
+      <input matInput type="text" formControlName="client_id" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Client's Name</mat-label>
+      <input matInput type="text" formControlName="client_name"  required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Client Description</mat-label>
+      <textarea matInput type="text" formControlName="client_description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Redirect Uris</mat-label>
+      <textarea matInput type="text" formControlName="client_redirecturis" required
+        placeholder="Ex.: http://yourdomain.com/*"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Web Origins</mat-label>
+      <textarea matInput type="text" formControlName="client_weborigins" required
+        placeholder="Ex.: http://yourdomain.com/*"></textarea>
+    </mat-form-field>
+
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button type="submit" mat-raised-button color="primary" [disabled]="clientForm.invalid || clientForm.untouched">Save</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</form>
